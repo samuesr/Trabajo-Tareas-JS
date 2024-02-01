@@ -3,8 +3,9 @@
         require_once 'connect.php';
         $db = 'bd_tareas';
       
-       // $nombre = $_POST['t_id'];
-        $id = "2";  // esto es solo para problar el filtro
+        $id = $_REQUEST['t_id'];
+        //print_r($_GET);
+        //$id = "2";  // esto es solo para problar el filtro
 
         
         $conexion = conectar($db);

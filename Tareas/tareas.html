@@ -7,29 +7,44 @@
     <title>Document</title>
     <script type="text/javascript" src="./js/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="./js/tareas.js"></script>
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
     <header>
         <h1>TAREAS.COM</h1>
         <div id="div_buscar">
-            <input type="text" id="t_buscar">
+            <input type="text" name="tbuscar" id="t_buscar">
             <input type="button" value="Buscar" name="buscar" id="b_buscar">
         </div>
     </header>
-        <main>
-            <div id="div_visualizar">
-                <input type="text" name="nombre" id="t_visualizar" placeholder="Nombre">
-                <!--<input type="textarea" name="nombre" id="t_visualizar">-->
-                <textarea name="nombre" id="t_visualizar" cols="30" rows="10" placeholder="Descripción"></textarea>
-                <input type="button" id="b_v_guardar" name="guardar" value="Guardar">
-                <input type="button" id="b_v_modificar" name="modificar" value="Modificar" >
-            </div>
-            <div id="div_filtar"></div>
-            <div id="div_listar"></div>
-        </main>
-    
+    <main>
+        <div id="div_visualizar">
+            <input type="text" name="id" id="id_visualizar" hidden>
+            <input type="text" name="nombre" id="t_visualizar" placeholder="Nombre">
+            <!--<input type="textarea" name="nombre" id="t_visualizar">-->
+            <textarea name="descripcion" id="d_visualizar" cols="30" rows="10" placeholder="Descripción"></textarea>
+            <input type="button" id="b_v_guardar" name="guardar" value="Guardar">
+            <input type="button" id="b_v_modificar" name="modificar" value="Modificar">
+        </div>
+        <div id="div_filtar"></div>
+        <div id="div_listar">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody id="id_tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
 </body>
 
 </html>

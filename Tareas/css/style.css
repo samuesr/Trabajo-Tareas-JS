@@ -59,7 +59,7 @@ main{
     padding: 20px;
 }
 
-#div_visualizar> input, textarea{
+#div_visualizar> input:not(#b_v_modificar, #id_visualizar), textarea{
 width: 90%;
 display: block;
 margin: 10px auto;
@@ -82,8 +82,13 @@ textarea{
    border: none;
 }
 #b_v_modificar {
-    display: none!important;
+    display: none;
+    width: 90%;
+margin: 10px auto;
 }
 #t_buscar{
     width: 50%;
+ }
+ #id_visualizar{
+    display:none;
  }
