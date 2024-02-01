@@ -3,9 +3,8 @@
         require_once 'connect.php';
         $db = 'bd_tareas';
       
-        $id = $_REQUEST['t_id'];   
-        //CON $_ ??
-       // $id = "Comprar";  // esto es solo para problar el filtro
+        
+        $id = $_REQUEST['t_id'];        
         
 
         $conexion = conectar($db);
@@ -19,9 +18,9 @@
         $pdo = $conexion->prepare($sql);
         $pdo->execute($parametros);
 
+        $num = 0;
         $num = $pdo->rowcount(); 
-        //echo "registros eliminados : ".$num;
-
+     
         // devolvemos los datos en formato json
         echo json_encode($num);
     

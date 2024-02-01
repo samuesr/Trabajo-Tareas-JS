@@ -3,12 +3,11 @@
         require_once 'connect.php';
         $db = 'bd_tareas';
       
-       // $nombre = $_POST['t_visualizar'];
-        $nombre = "Comprar";  // esto es solo para problar el filtro
-        // $descripcion = $_POST['t_descripcion'];
-        $descripcion = "Compar algo para cenar";  // esto es solo para problar el filtro
+       
+       
+        $nombre = $_REQUEST['nombre'];      
+        $descripcion = $_REQUEST['descripcion'];
       
-
         $conexion = conectar($db);
         $parametros = array(
             ":nombre"=>$nombre,
@@ -22,7 +21,7 @@
         $pdo->execute($parametros);
 
         $num = $pdo->rowcount(); 
-        echo "registros insertados : ".$num;
+        echo "registros insertados : ";
 
         // devolvemos los datos en formato json
         echo json_encode($num);

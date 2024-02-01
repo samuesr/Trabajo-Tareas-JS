@@ -3,10 +3,9 @@
         require_once 'connect.php';
         $db = 'bd_tareas';
       
-       // $nombre = $_POST['t_buscar'];
-        $nombre = "tarea";  // esto es solo para problar el filtro
-
-
+        
+        $nombre = $_REQUEST['nombre'];
+        
         // hay que poner el % aqui, para que no de error en la select
         $nombre = "%".$nombre."%";
       
