@@ -1,8 +1,7 @@
 <?php
         // filtramos los datos de la tabla segun el valor del nombre
         require_once 'connect.php';
-        $db = 'bd_tareas';
-      
+        $db = 'bd_tareas';     
        
        
         $nombre = $_REQUEST['nombre'];      
@@ -21,7 +20,6 @@
         $pdo->execute($parametros);
 
         $num = $pdo->rowcount(); 
-        echo "registros insertados : ";
 
         // devolvemos los datos en formato json
         echo json_encode($num);

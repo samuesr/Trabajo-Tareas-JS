@@ -59,7 +59,7 @@ main{
     padding: 20px;
 }
 
-#div_visualizar> input:not(#b_v_modificar, #id_visualizar), textarea{
+#div_visualizar input:not(#b_v_modificar, #id_visualizar), textarea{
 width: 90%;
 display: block;
 margin: 10px auto;
@@ -68,11 +68,11 @@ margin: 10px auto;
 #div_visualizar> input [type='button']{
     width: 20%;
     }
-main >div{
+#div_visualizar,#div_filtrar,#div_listar{
     background-color: white;
     border-radius: 20px;
     padding: 20px;
-    width: 40%;
+  
 }
 textarea{
     font-size: 12px;
@@ -90,5 +90,9 @@ margin: 10px auto;
     width: 50%;
  }
  #id_visualizar{
+    display:none;
+ }
+
+ #div_filtrar {
     display:none;
  }

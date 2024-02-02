@@ -4,7 +4,62 @@ function iniciar() {
     buscar();
     borrar();
     
+    $('#t_buscar').keyup(filtrar);
+    $('#b_v_guardar').click(crear);
+    $('#b_v_modificar').click(modificar)
+    
 }
+
+function crear(){
+    // guardamos los datos puestos en el formulario
+    var nom = $('#t_visualizar').val();;
+    var desc = $('#d_visualizar').val();;
+    $.ajax({
+        type:'POST',
+        url:"php/crear.php",
+        async:true, // no es obligatorio
+        data:  { nombre : nom, 
+                 descripcion : desc,
+                 nocache: Math.random()},
+        dataType: "json",
+        success: function (datos) {              
+            listar();            
+        },
+        error: function(){window.alert('Se ha producido un error al Crear,\nrecuerde que el nombre es CLAVE ÚNICA');}
+    });
+}
+
+
+function filtrar() {
+    // mandamos a buscar los datos que coincidan con el texto introducido   
+    var texto = $('#t_buscar').val();
+    console.log($('#t_buscar').val());
+    if (texto!='') {
+        $.ajax({
+        type:'POST',
+        url:"php/filtrar.php",
+        async:true, // no es obligatorio
+        data:  { nombre:texto, nocache: Math.random()},
+        dataType: "json",
+        success: function (datos) {              
+            $('#div_filtrar').empty();
+            $('#div_filtrar').show();
+            var cadena = "<ul>";
+            $(datos).each(function (indice, elem) {                            
+               cadena += '<li>'+ this.nombre +'</li>';                                   
+            });
+            cadena += "</ul>";            
+            $('#div_filtrar').html(cadena);            
+        },
+        error: function(){window.alert('Se ha producido un error al filtrar');}
+    });
+    } else{
+        $('#div_filtrar').empty();
+            $('#div_filtrar').hide();
+    }
+    
+}
+
 function buscar() { 
     $('table').click((e)=>{
         if($(e.target).attr('atr_modificar')){
@@ -14,7 +69,7 @@ function buscar() {
                     console.log(data);
                     $('#id_visualizar').val(data[0].id);
                     $('#t_visualizar').val(data[0].nombre);
-                    $('#d_visualizar').text(data[0].descripcion);
+                    $('#d_visualizar').val(data[0].descripcion);
                     $('#b_v_guardar').hide();
                     $('#b_v_modificar').show();
                 }
@@ -41,7 +96,7 @@ function buscar() {
                 $('#id_tbody').append('</tr>' );   
             });
         },
-        error: function(){window.alert('Se ha producido un error');}
+        error: function(){window.alert('Se ha producido un error al listar');}
     });
 }
 function borrar() {
@@ -52,7 +107,17 @@ function borrar() {
                 function () {
                     listar();
                 }
-            );
+            )
         }
     })
+}
+function modificar() {
+    $.getJSON("./php/modificar.php", {id:$('#id_visualizar').val(),nombre:$('#t_visualizar').val(),descripcion:$('#d_visualizar').val(),nocache:Math.random()},
+        function () {
+            listar();
+            $('#id_formulario').trigger('reset');
+            $('#b_v_guardar').show();
+            $('#b_v_modificar').hide();
+        }
+    );
 }

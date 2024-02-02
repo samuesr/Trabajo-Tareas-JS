@@ -5,7 +5,7 @@
     $db = 'bd_tareas';
     $conexion = conectar($db);
     
-    $sql = "SELECT * FROM tareas"; // recoge todas las asignaturas
+    $sql = "SELECT * FROM tareas ORDER BY id"; // recoge todas las asignaturas
     $pdo = $conexion->prepare($sql);
     $pdo->execute();
 

@@ -20,14 +20,16 @@
     </header>
     <main>
         <div id="div_visualizar">
+            <form action="" method="get" id="id_formulario">
             <input type="text" name="id" id="id_visualizar" hidden>
             <input type="text" name="nombre" id="t_visualizar" placeholder="Nombre">
             <!--<input type="textarea" name="nombre" id="t_visualizar">-->
             <textarea name="descripcion" id="d_visualizar" cols="30" rows="10" placeholder="Descripción"></textarea>
             <input type="button" id="b_v_guardar" name="guardar" value="Guardar">
-            <input type="button" id="b_v_modificar" name="modificar" value="Modificar">
+            <input type="button" id="b_v_modificar" name="modificar" value="Modificar"></form>
         </div>
-        <div id="div_filtar"></div>
+        <div>
+        <div id="div_filtrar"></div>
         <div id="div_listar">
 
             <table>
@@ -43,6 +45,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </main>
 
 </body>
