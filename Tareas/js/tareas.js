@@ -3,18 +3,16 @@ function iniciar() {
     listar();
     buscar();
     borrar();
-    
     $('#t_buscar').keyup(filtrar);
-   
     $('#b_v_guardar').click(crear);
     $('#b_v_modificar').click(modificar)
-    
 }
 
 function crear(){
     // guardamos los datos puestos en el formulario
-    var nom = $('#t_visualizar').val();;
-    var desc = $('#d_visualizar').val();;
+    var nom = $('#t_visualizar').val();
+    var desc = $('#d_visualizar').val();
+    if(nom!="" & desc!=""){
     $.ajax({
         type:'POST',
         url:"php/crear.php",
@@ -23,20 +21,19 @@ function crear(){
                  descripcion : desc,
                  nocache: Math.random()},
         dataType: "json",
-        success: function (datos) {              
+        success: function () {              
             listar();  
             limpiar_div_visualizar();          
         },
         error: function(){window.alert('Se ha producido un error al Crear,\nrecuerde que el nombre es CLAVE ÚNICA');}
-    });
+    });} else {
+        window.alert('No se pueden incluir notas con campos vacios');
+    }
 }
-
-
 
 function filtrar() {
     // mandamos a buscar los datos que coincidan con el texto introducido   
     var texto = $('#t_buscar').val();
-    console.log($('#t_buscar').val());
     if (texto!='') {
         $.ajax({
         type:'POST',
@@ -56,8 +53,6 @@ function filtrar() {
                 $('#id_tbody').append('<input type="button" value="Modificar" atr_modificar="' + this.id + '"</td>');                    
                 $('#id_tbody').append('</tr>' );   
             }); 
-            
-
             // lo habiamos puesto primero como una lista aparte que se cargaba en un div
                 /* $('#div_filtrar').empty();
                 $('#div_filtrar').show();
@@ -73,8 +68,7 @@ function filtrar() {
     } else{
         // Si el campo de filtro esta vacio, volcamos todo lo de la bbdd en el div_listar
         listar();
-    }
-    
+    } 
 }
 
 function buscar() { 
@@ -119,16 +113,16 @@ function borrar() {
     $('table').click((e)=>{
         if($(e.target).attr('atr_borrar')){
             id=$(e.target).attr('atr_borrar');
-            $.getJSON("./php/eliminar.php", {t_id:id, nocache: Math.random()},
+            $.get("./php/eliminar.php", {t_id:id, nocache: Math.random()},
                 function () {
                     listar();
-                }
-            )
+                },
+            );
         }
     })
 }
 function modificar() {
-    $.getJSON("./php/modificar.php", 
+    $.get("./php/modificar.php", 
                 {  id:$('#id_visualizar').val(),nombre:$('#t_visualizar').val(),
                    descripcion:$('#d_visualizar').val(),nocache:Math.random()
                 },
