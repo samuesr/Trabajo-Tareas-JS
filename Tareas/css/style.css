@@ -58,7 +58,6 @@ main {
 }
 #div_visualizar,
 #div_listar  {
-  /*width: clamp(50px,45%,600px);*/
   background-color: white;
   border-radius: 20px;
   padding: 20px;
@@ -90,7 +89,7 @@ border-radius: 5px;
 #b_v_modificar {
   display: none;
   width: 90%;
-  margin: 20px auto;  /*para que quede como el boton de crear */
+  margin: 20px auto;
 }
 #t_buscar {
   width: 100%;
@@ -129,7 +128,4 @@ input[value='Borrar']:hover{
 }
 input[value='Modificar']:hover, #div_visualizar input[type='button']:hover{
   background-color: #065A9B;
-}
-tbody:nth-child(odd)>td{
-  background-color: #FFBF00;
 }
