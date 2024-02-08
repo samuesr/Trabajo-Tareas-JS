@@ -39,7 +39,7 @@ header {
   padding: 20px;
 }
 input {
-  width: 100px;
+  width: clamp(70px,2vw,4vw);
   height: 40px;
   font-size: 14px;
   border-radius: 5px;
@@ -61,6 +61,7 @@ main {
   background-color: white;
   border-radius: 20px;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 #div_visualizar input:not(#b_v_modificar, #id_visualizar),
@@ -114,18 +115,24 @@ img {
 td {
   padding-right: 8px;
   text-align: left;
-  font-size: 20px;
+  font-size: clamp(12px,3vw,16px);
 }
 input[value='Borrar']{
   background-color: #4A08A3;
   border-radius: 20px;
+  font-size: clamp(1vw,3.5vw,14px);
 }
 #div_listar input[value='Modificar']{
   border-radius: 20px;
+  font-size: clamp(1vw,3.5vw,14px);
 }
 input[value='Borrar']:hover{
   background-color: #7636CB;
 }
 input[value='Modificar']:hover, #div_visualizar input[type='button']:hover{
   background-color: #065A9B;
+}
+#div_visualizar{
+  min-width: 45%;
+  
 }

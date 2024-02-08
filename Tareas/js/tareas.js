@@ -51,8 +51,8 @@ function filtrar() {
                 $(datos).each(function () {
                     $('#id_tbody').append('<tr>');
                     $('#id_tbody').append('<td>' + this.id + '</td><td>' + this.nombre + '</td><td>' + this.descripcion + '</td>');
-                    $('#id_tbody').append('<td><input type="button" value="Borrar" atr_borrar="' + this.id + '"> ');
-                    $('#id_tbody').append('<input type="button" value="Modificar" atr_modificar="' + this.id + '"</td>');
+                    $('#id_tbody').append('<td><input type="button" value="Borrar" atr_borrar="' + this.id + '"></td>');
+                    $('#id_tbody').append('<td><input type="button" value="Modificar" atr_modificar="' + this.id + '"</td>');
                     $('#id_tbody').append('</tr>');
                 });
                 // lo habiamos puesto primero como una lista aparte que se cargaba en un div
