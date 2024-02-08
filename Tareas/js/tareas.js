@@ -79,12 +79,11 @@ function buscar() {
             id = $(e.target).attr('atr_modificar');
             $.getJSON("./php/buscar.php", { t_id: id, nocache: Math.random() },
                 function (data) {
-                    console.log(data);
                     $('#id_visualizar').val(data[0].id);
                     $('#t_visualizar').val(data[0].nombre);
                     $('#d_visualizar').val(data[0].descripcion);
                     $('#b_v_guardar').hide();
-                    $('#b_v_modificar').show();
+                    $('#b_v_modificar').css('display','block');
                 }
             );
         }
@@ -101,11 +100,18 @@ function listar() {
             // mostramos la informacion en una tabla dentro del div_listar
             $('#id_tbody').empty();
             $(datos).each(function () {
-                $('#id_tbody').append('<tr>');
+                var fila=$('<tr/>').append(
+                    $('<td/>').text(this.id),
+                    $('<td/>').text(this.nombre),
+                    $('<td/>').text(this.descripcion),
+                    $('<td/>').append('<input type="button" value="Borrar" atr_borrar="' + this.id + '"> '),
+                    $('<td/>').append('<input type="button" value="Modificar" atr_modificar="' + this.id + '"> '))
+               /* $('#id_tbody').append('<tr/>');
                 $('#id_tbody').append('<td>' + this.id + '</td><td>' + this.nombre + '</td><td>' + this.descripcion + '</td>');
                 $('#id_tbody').append('<td><input type="button" value="Borrar" atr_borrar="' + this.id + '"> ');
                 $('#id_tbody').append('<input type="button" value="Modificar" atr_modificar="' + this.id + '"</td>');
-                $('#id_tbody').append('</tr>');
+                $('#id_tbody').append('</tr>');*/
+                $(fila).appendTo('#id_tbody');
             });
         },
         error: function () { window.alert('Se ha producido un error al listar'); }

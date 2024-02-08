@@ -13,7 +13,7 @@
             ":nombre"=>$nombre
         );
        
-        $sql= "SELECT * FROM tareas WHERE nombre LIKE :nombre ORDER BY id";       
+        $sql= "SELECT * FROM tareas WHERE nombre OR descripcion LIKE :nombre ORDER BY id";       
      
         $pdo = $conexion->prepare($sql);
         $pdo->execute($parametros);
