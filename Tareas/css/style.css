@@ -73,7 +73,7 @@ textarea {
 }
 
 #id_tabla {
-  width: 100%;
+  width: 90%;
   display: block;
   margin: 20px auto;
 }
@@ -136,4 +136,36 @@ input[value='Modificar']:hover, #div_visualizar input[type='button']:hover{
 #div_visualizar{
   min-width: 45%;
   
+}
+table {
+  border-collapse: collapse;
+  width: 100%;    
+}
+table, th, td {
+  padding : 2px;
+}
+
+th:first-child,
+td:first-child {
+  width: 10%; /* Ancho de la primera columna */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 20%; /* Ancho de la segunda columna */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 40%; /* Ancho de la tercera columna */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 10%; /* Ancho de la cuarta columna */
+}
+
+th:last-child,
+td:last-child {
+  width: 10%; /* Ancho de la quinta columna */
 }
