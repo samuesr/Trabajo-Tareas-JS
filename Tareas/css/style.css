@@ -117,7 +117,6 @@ td {
   padding-right: 8px;
   text-align: left;
   font-size: clamp(11px,3vw,16px);
-  max-width: 1%;
 }
 input[value='Borrar']{
   background-color: #4A08A3;
